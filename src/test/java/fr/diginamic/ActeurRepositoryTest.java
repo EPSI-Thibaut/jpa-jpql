@@ -150,7 +150,7 @@ public class ActeurRepositoryTest {
 	 */
 	@Test
 	public void testExtraireParRealisateurEntreAnnee() {
-		TypedQuery<Acteur> query = em.createQuery("SELECT a FROM Acteur a JOIN a.roles r JOIN r.film f WHERE f.realisateur.nom = 'Ridley Scott' AND f.annee BETWEEN 2010 AND 2020", Acteur.class);
+		TypedQuery<Acteur> query = em.createQuery("SELECT a FROM Acteur a JOIN a.roles r JOIN r.film f JOIN f.realisateurs real WHERE real.identite = 'Ridley Scott' AND f.annee BETWEEN 2010 AND 2020", Acteur.class);
 		List<Acteur> acteurs = query.getResultList();
 
 		assertEquals(27, acteurs.size());
